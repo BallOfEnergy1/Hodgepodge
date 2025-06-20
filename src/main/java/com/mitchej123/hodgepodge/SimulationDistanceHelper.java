@@ -60,66 +60,66 @@ public class SimulationDistanceHelper {
     /**
      * The current world
      */
-    private final WeakReference<World> worldRef;
+    protected final WeakReference<World> worldRef;
 
     /**
      * True if we have a WorldServer
      */
-    private final boolean isServer;
+    protected final boolean isServer;
 
     /**
      * Chunks that should not be ticked
      */
-    private final Long2ByteOpenHashMap noTickChunks = new Long2ByteOpenHashMap();
+    protected final Long2ByteOpenHashMap noTickChunks = new Long2ByteOpenHashMap();
 
     /**
      * Changes to the chunks that should not be ticked. Needed since we only update the real map once a tick. Reason is
      * that forced chunks are also cached and updated once a tick, we want both in sync.
      */
-    private final LongBooleanArrayList noTickChunksChanges = new LongBooleanArrayList();
+    protected final LongBooleanArrayList noTickChunksChanges = new LongBooleanArrayList();
 
     /**
      * Cache of forced chunks. Profiler says that is faster.
      */
-    private final LongOpenHashSet forcedChunksMap = new LongOpenHashSet();
+    protected final LongOpenHashSet forcedChunksMap = new LongOpenHashSet();
 
     /**
      * Cache to quickly check if a chunk should be processed or not. Profiler says this is faster.
      */
-    private final Long2BooleanOpenHashMap cacheShouldProcessTick = new Long2BooleanOpenHashMap();
+    protected final Long2BooleanOpenHashMap cacheShouldProcessTick = new Long2BooleanOpenHashMap();
 
     /**
      * Old player positions to see if they moved.
      */
-    private final Map<EntityPlayer, ChunkCoordIntPair> playerPosOldMap = new WeakHashMap<>();
+    protected final Map<EntityPlayer, ChunkCoordIntPair> playerPosOldMap = new WeakHashMap<>();
 
     /**
      * All ticks that are currently considered.
      */
-    private final ObjectAVLTreeSet<NextTickListEntry> pendingTickCandidates = new ObjectAVLTreeSet<>();
+    protected final ObjectAVLTreeSet<NextTickListEntry> pendingTickCandidates = new ObjectAVLTreeSet<>();
 
     /**
      * Map of ticks to chunk, duplicating pendingTickListEntriesTreeSet for quicker lookup.
      */
-    private final Long2ObjectMap<HashSet<NextTickListEntry>> chunkTickMap = new Long2ObjectOpenHashMap<>();
+    protected final Long2ObjectMap<HashSet<NextTickListEntry>> chunkTickMap = new Long2ObjectOpenHashMap<>();
 
     /**
      * TreeSet pendingTickListEntriesTreeSet from WorldServer
      */
-    private TreeSet<NextTickListEntry> pendingTickListEntriesTreeSet;
+    protected TreeSet<NextTickListEntry> pendingTickListEntriesTreeSet;
     /**
      * HashSet pendingTickListEntriesHashSet from WorldServer
      */
-    private Set<NextTickListEntry> pendingTickListEntriesHashSet;
+    protected Set<NextTickListEntry> pendingTickListEntriesHashSet;
     /**
      * Check if chunk exists in WorldServer
      */
-    private BiPredicate<Integer, Integer> chunkExists;
+    protected BiPredicate<Integer, Integer> chunkExists;
 
     /**
      * Simulation distance from last tick, to detect if it has changed.
      */
-    private int simulationDistanceOld;
+    protected int simulationDistanceOld;
 
     public void preventChunkSimulation(long packedChunkPos, boolean prevent) {
         noTickChunksChanges.add(packedChunkPos, prevent);
@@ -299,7 +299,7 @@ public class SimulationDistanceHelper {
         }
     }
 
-    private void removeTick(NextTickListEntry entry) {
+    protected void removeTick(NextTickListEntry entry) {
         World world = worldRef.get();
         if (world == null) {
             return;

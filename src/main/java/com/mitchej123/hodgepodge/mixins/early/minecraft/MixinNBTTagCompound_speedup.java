@@ -29,12 +29,15 @@ public class MixinNBTTagCompound_speedup {
     public NBTBase copy() {
 
         NBTTagCompound nbttagcompound = new NBTTagCompound();
-        final Object2ObjectOpenHashMap.FastEntrySet<String, NBTBase> entries = ((Object2ObjectOpenHashMap<String, NBTBase>) tagMap)
-                .object2ObjectEntrySet();
-        final ObjectIterator<Object2ObjectMap.Entry<String, NBTBase>> fastIterator = entries.fastIterator();
-        while (fastIterator.hasNext()) {
-            final Object2ObjectMap.Entry<String, NBTBase> entry = fastIterator.next();
-            nbttagcompound.setTag(entry.getKey(), entry.getValue().copy());
+
+        synchronized (tagMap) {
+            final Object2ObjectOpenHashMap.FastEntrySet<String, NBTBase> entries = ((Object2ObjectOpenHashMap<String, NBTBase>) tagMap)
+                    .object2ObjectEntrySet();
+            final ObjectIterator<Object2ObjectMap.Entry<String, NBTBase>> fastIterator = entries.fastIterator();
+            while (fastIterator.hasNext()) {
+                final Object2ObjectMap.Entry<String, NBTBase> entry = fastIterator.next();
+                nbttagcompound.setTag(entry.getKey(), entry.getValue().copy());
+            }
         }
         return nbttagcompound;
     }
