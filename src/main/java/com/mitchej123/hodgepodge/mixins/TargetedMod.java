@@ -48,6 +48,7 @@ public enum TargetedMod implements ITargetedMod {
     PORTAL_GUN("PortalGun", null, "PortalGun"),
     PROJECTE("ProjectE", null, "ProjectE"),
     RAILCRAFT("Railcraft", null, "Railcraft"),
+    SPOOL("Spool", "com.gamma.spool.SpoolCoreMod", "spool"),
     THAUMCRAFT("Thaumcraft", null, "Thaumcraft"), // "thaumcraft.codechicken.core.launch.DepLoader"
     THERMALDYNAMICS("Thermal Dynamics", null, "ThermalDynamics"),
     THERMALEXPANSION("Thermal Expansion", null, "ThermalExpansion"),
@@ -58,8 +59,7 @@ public enum TargetedMod implements ITargetedMod {
     WITCHERY("Witchery", null, "witchery"),
     XAEROMINIMAP("Xaero's Minimap", null, "XaeroMinimap"),
     XAEROWORLDMAP("Xaero's World Map", null, "XaeroWorldMap"),
-    ZTONES("ZTones", null, "Ztones"),
-    SPOOL("Spool", null, "spool");
+    ZTONES("ZTones", null, "Ztones");
 
     /** The "name" in the {@link Mod @Mod} annotation */
     public final String modName;
