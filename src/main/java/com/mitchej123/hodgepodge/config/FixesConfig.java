@@ -64,7 +64,7 @@ public class FixesConfig {
     @Config.DefaultBoolean(true)
     public static boolean fixFenceConnections;
 
-    @Config.Comment("Fix vanilla fire spread sometimes cause NPE on thermos")
+    @Config.Comment("Fix vanilla fire spread sometimes causing NPE on thermos")
     @Config.DefaultBoolean(true)
     public static boolean fixFireSpread;
 
@@ -200,6 +200,10 @@ public class FixesConfig {
     @Config.DefaultBoolean(true)
     public static boolean addSimulationDistance;
 
+    @Config.Comment("Fix RCON Threading by forcing it to run on the main thread")
+    @Config.DefaultBoolean(true)
+    public static boolean fixRconThreading;
+
     @Config.Comment("Fix exiting fullscreen when you tab out of the game")
     @Config.DefaultBoolean(true)
     public static boolean fixUnfocusedFullscreen;
@@ -215,10 +219,6 @@ public class FixesConfig {
     @Config.Comment("Fixes village unchecked getBlock() calls")
     @Config.DefaultBoolean(true)
     public static boolean fixVillageUncheckedGetBlock;
-
-    @Config.Comment("Fix unprotected getBlock() in World")
-    @Config.DefaultBoolean(true)
-    public static boolean fixWorldGetBlock;
 
     @Config.Comment("Fix WorldServer leaking entities when no players are present in a dimension")
     @Config.DefaultBoolean(true)
@@ -371,6 +371,16 @@ public class FixesConfig {
     @Config.RequiresMcRestart
     public static boolean fixEventBusMemoryLeak;
 
+    @Config.Comment("Skips playing empty sounds.")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean skipEmptySounds;
+
+    @Config.Comment("Render the house character (\u2302 - Unicode index 2302) in the Minecraft font.")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean fixHouseCharRendering;
+
     /* ====== Minecraft fixes end ===== */
 
     // bukkit fixes
@@ -502,6 +512,14 @@ public class FixesConfig {
     @Config.DefaultBoolean(true)
     public static boolean fixExtraUtilitiesHealingAxeHeal;
 
+    @Config.Comment("Fixes the healing axe to be unbreakable during damage checks that aren't breaking blocks or attacking.")
+    @Config.DefaultBoolean(true)
+    public static boolean fixExtraUtilitiesHealingAxeUnbreakable;
+
+    @Config.Comment("Fixes the erosion shovel to be unbreakable during damage checks that aren't breaking blocks or attacking.")
+    @Config.DefaultBoolean(true)
+    public static boolean fixExtraUtilitiesErosionShovelUnbreakable;
+
     @Config.Comment("Fix Extra Utilities chests not updating comparator redstone signals when their inventories change")
     @Config.DefaultBoolean(true)
     public static boolean fixExtraUtilitiesChestComparatorUpdate;
@@ -516,7 +534,7 @@ public class FixesConfig {
 
     // Galacticraft
 
-    @Config.Comment("Fix time commands with GC")
+    @Config.Comment("Fix time commands with Galacticraft")
     @Config.DefaultBoolean(true)
     public static boolean fixTimeCommandWithGC;
 
@@ -666,6 +684,10 @@ public class FixesConfig {
     @Config.DefaultBoolean(true)
     public static boolean fixNullHandlingItemWispEssence;
 
+    @Config.Comment("Fix check for EE3 item in Thaumcraft to prevent issues on modern Java.")
+    @Config.DefaultBoolean(true)
+    public static boolean fixThaumcraftEE3Check;
+
     // Thermal Dynamics
 
     @Config.Comment("Prevent crash with Thermal Dynamics from Negative Array Exceptions from item duct transfers")
@@ -675,6 +697,16 @@ public class FixesConfig {
     @Config.Comment("Prevent ClassCastException on forming invalid Thermal Dynamic fluid grid")
     @Config.DefaultBoolean(true)
     public static boolean preventFluidGridCrash;
+
+    // Travellers' Gear
+
+    @Config.Comment({ "Return items placed in Traveller's Gear slots after the mod is removed when players log in.",
+            "Sends messages to the log that start with \"[Hodgepodge]: [TG Recovery]\".",
+            "Removes players from the TG items file after returning items. Deletes it if it's empty.",
+            "Automatically disables itself on servers after deleting the TG items file.",
+            "Clients leave it on to allow for joining multiple SP worlds with TG items." })
+    @Config.DefaultBoolean(true)
+    public static boolean returnTravellersGearItems;
 
     // VoxelMap
 

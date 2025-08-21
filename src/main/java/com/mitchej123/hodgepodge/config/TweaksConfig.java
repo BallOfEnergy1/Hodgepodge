@@ -82,6 +82,14 @@ public class TweaksConfig {
     @Config.DefaultBoolean(false)
     public static boolean enhanceNightVision;
 
+    @Config.Comment("Replaces night vision expiry effect with a fade-out effect")
+    @Config.DefaultBoolean(true)
+    public static boolean fadeNightVision;
+
+    @Config.Comment("Night vision fade-out duration (in ticks)")
+    @Config.DefaultInt(50)
+    public static int fadeNightVisionDuration;
+
     @Config.Comment("Allows blocks to be placed at a faster rate (toggleable via keybind)")
     @Config.DefaultBoolean(false)
     public static boolean fastBlockPlacing;
@@ -139,10 +147,6 @@ public class TweaksConfig {
     @Config.Comment("Reduces water opacity from 3 to 1, to match modern")
     @Config.DefaultBoolean(false)
     public static boolean useLighterWater;
-
-    @Config.Comment("Make mod links in the mod menu clickable")
-    @Config.DefaultBoolean(true)
-    public static boolean clickableModUrls;
 
     @Config.Comment("Entirely remove Endermen's ability to grab blocks. Should also work for any modded entities that extend EntityEnderman and call its onLivingUpdate")
     @Config.DefaultBoolean(false)
@@ -247,11 +251,18 @@ public class TweaksConfig {
 
     @Config.Comment("Allow 5 Fir Sapling planted together ('+' shape) to grow to a big fir tree")
     @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
     public static boolean makeBigFirsPlantable;
 
     @Config.Comment("Remove the BOP quicksand generation")
     @Config.DefaultBoolean(false)
+    @Config.RequiresMcRestart
     public static boolean removeBOPQuicksandGeneration;
+
+    @Config.Comment("Remove the BOP donator effect which blocks the main thread when starting the game")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean removeBOPDonatorEffect;
 
     // Cofh
 
@@ -293,6 +304,11 @@ public class TweaksConfig {
     @Config.DefaultBoolean(false)
     @Config.RequiresMcRestart
     public static boolean synchronizeIC2Reactors;
+
+    @Config.Comment("Allow Dispensers to dispense IC2 ITNT.")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean ic2DispenserITNT;
 
     // Minechem
 
@@ -387,5 +403,9 @@ public class TweaksConfig {
     @Config.Comment("Simulation distance (needs addSimulationDistance to be active)")
     @Config.DefaultInt(32)
     public static int simulationDistance;
+
+    @Config.Comment("Add a gamerule to disable hunger")
+    @Config.DefaultBoolean(true)
+    public static boolean hungerGameRule;
 
 }

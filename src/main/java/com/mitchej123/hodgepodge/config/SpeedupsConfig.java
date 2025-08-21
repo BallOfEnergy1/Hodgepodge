@@ -72,11 +72,6 @@ public class SpeedupsConfig {
     @Config.RangeInt(min = 100)
     public static int maxUnloadSpeed;
 
-    @Config.Comment("Speed up NBT copying")
-    @Config.DefaultBoolean(true)
-    @Config.RequiresMcRestart
-    public static boolean speedupNBTCopy;
-
     @Config.Comment("Optimize mob spawning")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
@@ -91,6 +86,21 @@ public class SpeedupsConfig {
     @Config.RequiresMcRestart
     public static boolean lavaChunkLoading;
 
+    @Config.Comment("Speed up the vanilla method to remove formatting codes")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean speedupRemoveFormatting;
+
+    @Config.Comment("Cache last matching recipes in crafting manager")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean cacheLastMatchingRecipe;
+
+    @Config.Comment("Cache size for the last matching recipes in crafting manager")
+    @Config.DefaultInt(64)
+    @Config.RequiresMcRestart
+    public static int recipeCacheSize;
+
     // Biomes O' Plenty
 
     @Config.Comment("Speedup biome fog rendering in BiomesOPlenty")
@@ -102,5 +112,12 @@ public class SpeedupsConfig {
     @Config.Comment("Replace reflection in VoxelMap to directly access the fields instead.")
     @Config.DefaultBoolean(true)
     public static boolean replaceVoxelMapReflection;
+
+    // IC2
+
+    @Config.Comment("Speedup IC2 reactor size computation")
+    @Config.DefaultBoolean(true)
+    @Config.RequiresMcRestart
+    public static boolean speedupIC2ReactorSize;
 
 }
