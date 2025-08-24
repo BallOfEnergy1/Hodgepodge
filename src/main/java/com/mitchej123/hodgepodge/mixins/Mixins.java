@@ -266,6 +266,7 @@ public enum Mixins implements IMixins {
             .setApplyIf(() -> FixesConfig.fixHopperHitBox)
             .setPhase(Phase.EARLY)),
     TILE_ENTITY_RENDERER_PROFILER(new MixinBuilder()
+			.addExcludedMod(TargetedMod.SPOOL)
             .addClientMixins("minecraft.profiler.TileEntityRendererDispatcherMixin")
             .addClientMixins("minecraft.profiler.MinecraftMixin")
             .setApplyIf(() -> TweaksConfig.enableTileRendererProfiler)

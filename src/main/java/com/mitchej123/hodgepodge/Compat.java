@@ -36,8 +36,7 @@ public class Compat {
     static void init(Side side) {
         isClient = side == Side.CLIENT;
 
-        if(Loader.isModLoaded("spool"))
-            SpoolCompat.init();
+        if (Loader.isModLoaded("spool")) SpoolCompat.init();
 
         isNeiPresent = Loader.isModLoaded("NotEnoughItems");
         if (isClient) {
