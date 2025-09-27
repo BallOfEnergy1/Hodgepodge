@@ -55,7 +55,7 @@ public enum TargetedMod implements ITargetMod {
     PORTAL_GUN("PortalGun"),
     PROJECTE("ProjectE"),
     RAILCRAFT("Railcraft"),
-    SPOOL("com.gamma.spool.SpoolCoreMod", "spool"),
+    SPOOL("com.gamma.spool.core.SpoolCoreMod", "spool"),
     THAUMCRAFT("Thaumcraft"), // "thaumcraft.codechicken.core.launch.DepLoader"
     THERMALDYNAMICS("ThermalDynamics"),
     THERMALEXPANSION("ThermalExpansion"),
